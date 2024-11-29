@@ -99,7 +99,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-4 animated slideInDown">Dream it, We Actualize it!</h1>
                                     <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown" style="font-size: 1.5rem !important;">Building, Construction & Renovation Works</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
+                                    <a href="service.html" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-4 animated slideInDown">Dream it, We Actualize it!</h1>
                                     <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown" style="font-size: 1.5rem !important;">Plumbing & Kitchen Equipment</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
+                                    <a href="service.html" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-4 animated slideInDown">Dream it, We Actualize it!</h1>
                                     <p class="fs-5 text-body mb-4 pb-2 mx-sm-5 animated slideInDown" style="font-size: 1.5rem !important;">Heating, Ventilation & Air Conditioning</p>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
+                                    <a href="service.html" class="btn btn-primary py-3 px-5 animated slideInDown">Explore More</a>
                                 </div>
                             </div>
                         </div>
@@ -396,6 +396,12 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
+                                            <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+                                            <label for="phone">Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
                                             <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                             <label for="subject">Subject</label>
                                         </div>
@@ -411,6 +417,10 @@
                                     </div>
                                 </div>
                             </form>
+                        
+                            <div id="feedback">
+                                <?php if (!empty($_GET['msg'])) echo $_GET['msg']; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -499,7 +509,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Location & Contact</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>Enkei Centre 2nd Floor, Rm 203 Ngara Road. P.O. Box 9023-00200, Nairobi.</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Enkei Centre 2nd Floor, Rm 211 Ngara Road. P.O. Box 9023-00200, Nairobi.</p>
                     <p><i class="fa fa-phone-alt me-3"></i>(+254) 722 393 845 | (+254) 732 500 988 | (+254) 704 938 849</p>
                     <p><i class="fa fa-envelope me-3"></i>info@hilley-consultants.com</p>
                     <p><i class="fa fa-envelope me-3"></i>hilleyconsultantsltd@gmail.com</p>
