@@ -105,6 +105,7 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <h1 class="display-6 mb-5">If You Have Any Query, Please Contact Us</h1>
                     <p class="mb-4"></p>
+                    
                     <form action="contact.php" method="POST">
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -117,6 +118,12 @@
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                                     <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+                                    <label for="phone">Phone Number</label>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -136,6 +143,12 @@
                             </div>
                         </div>
                     </form>
+                
+                    <div id="feedback">
+                        <?php if (!empty($_GET['msg'])) echo $_GET['msg']; ?>
+                    </div>
+
+
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
                     <div class="position-relative overflow-hidden h-100">

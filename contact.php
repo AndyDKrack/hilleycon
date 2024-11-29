@@ -1,36 +1,41 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get form data
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $subject = htmlspecialchars(trim($_POST['subject']));
-    $message = htmlspecialchars(trim($_POST['message']));
+// Initialize a feedback message
+$message = "";
 
-    // Validate email
+// Check if the form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve and sanitize form inputs
+    $name = htmlspecialchars($_POST['name'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $phone = htmlspecialchars($_POST['phone'] ?? '');
+    $subject = htmlspecialchars($_POST['subject'] ?? '');
+    $userMessage = htmlspecialchars($_POST['message'] ?? '');
+
+    // Validate the email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid email format.");
-    }
-
-    // Email configuration
-    $to = "info@hilley-consultants.com"; 
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8";
-
-    // Message content
-    $emailBody = "You have received a new message from your website contact form:\n\n";
-    $emailBody .= "Name: $name\n";
-    $emailBody .= "Email: $email\n";
-    $emailBody .= "Subject: $subject\n\n";
-    $emailBody .= "Message:\n$message\n";
-
-    // Send email
-    if (mail($to, $subject, $emailBody, $headers)) {
-        echo "Message sent successfully!";
+        $message = "Invalid email address. Please provide a valid email.";
     } else {
-        echo "There was an error sending your message.";
+        // Prepare the email details
+        $to = "info@hilley-consultants.com";
+        $emailSubject = "Contact Form Submission: $subject";
+        $emailBody = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage:\n$userMessage";
+        $headers = "From: $email";
+
+        // Attempt to send the email
+        if (mail($to, $emailSubject, $emailBody, $headers)) {
+            $message = "Message sent successfully! We will get back to you soon.";
+        } else {
+            $message = "Failed to send the message. Please try again later.";
+        }
     }
+
+    // Redirect back to the form with a message
+    header("Location: index.php?msg=" . urlencode($message));
+    exit;
 } else {
-    echo "Invalid request method.";
+    // If the form was not submitted, show a generic error
+    $message = "Invalid request.";
+    header("Location: index.php?msg=" . urlencode($message));
+    exit;
 }
 ?>
